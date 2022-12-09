@@ -24,6 +24,9 @@ public class AsteroidController : MonoBehaviour
 	{
 		asteroidSpeed = player_ControllerScrip.gameSpeed * asteroidSpeedMutliplier + 1f;
 		transform.position = Vector3.MoveTowards(transform.position, target, asteroidSpeed * Time.deltaTime);
+		if(player_ControllerScrip.hasGameEnded){
+			Destroy(this.gameObject);
+		}
 	}
 	
 	private void GetTargetPosition()

@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
 	[Header("FormatSettings")]
 	public bool hasFormat;
 	public TimerFormats formats;
-	private Dictionary<TimerFormats, string> timerFormats = new Dictionary<TimerFormats, string>();
+	public Dictionary<TimerFormats, string> timerFormats = new Dictionary<TimerFormats, string>();
     // Start is called before the first frame update
     void Start()
     {

@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
 	private Vector2 speed;
 	[SerializeField]
 	private CharacterController characterController;
+	[SerializeField]
+	private GameObject DeathScreenOverlay;
+	[SerializeField]
+	private GameObject VicoryScreenOverLay;
+	public bool hasGameEnded;
 	private void Awake()
 	{
 		playerInputs = new Inputs();
@@ -43,4 +48,17 @@ public class PlayerController : MonoBehaviour
 	    characterController.Move(move * Time.deltaTime * 			gameSpeed * gameSpeedMultiplier);
 	    //Debug.Log(gameSpeed + " this is game speed");
     }
+    
+	// OnTriggerEnter is called when the Collider other enters the trigger.
+	protected void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.tag == "asteroid"){
+			DeathScreenOverlay.SetActive(true);
+			hasGameEnded = true;
+		}
+		else if (other.gameObject.tag == "Goal"){
+			hasGameEnded = true;
+			VicoryScreenOverLay.SetActive(true);
+		}
+	}
 }
